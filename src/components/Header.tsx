@@ -10,7 +10,7 @@ const Header = () => {
       <Link href="/" className="font-bold text-gray-400 text-2xl">
         GamerShop
       </Link>
-      <Link href="/cart">Cart: {cart.length}</Link>
+      <Link href={cart.length === 0 ? {} : "/cart"}>Cart: {cart.length}</Link>
     </div>
   );
 };
