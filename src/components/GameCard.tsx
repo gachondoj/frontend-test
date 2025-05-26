@@ -1,9 +1,8 @@
 import { Game } from "@/utils/endpoint";
 import { isObjectInList } from "@/utils/isObjectInList";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
-const Card = ({
+const GameCard = ({
   game,
   cart,
   addToCart,
@@ -49,4 +48,4 @@ const Card = ({
   );
 };
 
-export default Card;
+export default GameCard;

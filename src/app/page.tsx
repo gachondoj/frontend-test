@@ -1,5 +1,5 @@
 "use client";
-import Card from "@/components/Card";
+import GameCard from "@/components/GameCard";
 import { CartContext } from "@/context/cartContext";
 import { getGames } from "@/services/games";
 import { Game } from "@/utils/endpoint";
@@ -108,7 +108,7 @@ export default function Home() {
       ) : (
         <div className="w-full grid grid-cols-1 sm:grid-cols-3 sm:gap-12 gap-6">
           {games.map((game) => (
-            <Card
+            <GameCard
               key={game.id}
               game={game}
               cart={cart}
