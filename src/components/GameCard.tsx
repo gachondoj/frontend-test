@@ -22,7 +22,7 @@ const GameCard = ({
   };
 
   return (
-    <div className="border-[0.5px] border-[#8F8F8F] rounded-2xl p-6 flex flex-col gap-5 h-[436px] w-[380px]">
+    <div className="relative border-[0.5px] border-[#8F8F8F] rounded-2xl p-6 flex flex-col gap-5 h-[436px] w-[380px]">
       <Image
         src={game.image}
         alt={game.name}
@@ -44,6 +44,12 @@ const GameCard = ({
       >
         {isObjectInList(game, cart) ? "REMOVE" : "ADD TO CART"}
       </button>
+
+      {game.isNew && (
+        <div className="bg-white rounded-[4px] absolute top-9 left-9 px-3 py-2 text-gray-600">
+          New
+        </div>
+      )}
     </div>
   );
 };
