@@ -17,7 +17,7 @@ const CartItem = ({ game, isLast }: { game: Game; isLast: boolean }) => {
         height={156}
         className="max-h-[156px] min-w-64"
       />
-      <div>
+      <div className="w-full">
         <div className="text-gray-300 font-bold text-base mb-3">
           {game.genre}
         </div>
