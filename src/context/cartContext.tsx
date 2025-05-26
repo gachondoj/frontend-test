@@ -29,10 +29,6 @@ export const CartProvider = ({ children }: { children: ReactElement }) => {
     setCart(cart.filter((_game) => game.id !== _game.id));
   };
 
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
-
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
       {children}
