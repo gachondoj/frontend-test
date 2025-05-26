@@ -4,7 +4,7 @@ import { CartContext } from "@/context/cartContext";
 import { getGames } from "@/services/games";
 import { Game } from "@/utils/endpoint";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 
 export default function Home() {
   const { setCart: updateCart } = useContext(CartContext);
