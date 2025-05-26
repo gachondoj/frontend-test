@@ -1,39 +1,45 @@
 "use client";
 import { Game } from "@/utils/endpoint";
-import {
-  createContext,
-  ReactElement,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useState, useEffect, ReactElement } from "react";
 
-const CartContext = createContext<{
+export const CartContext = createContext<{
   cart: Game[];
-  addToCart: (game: Game) => void;
-  removeFromCart: (game: Game) => void;
+  setCart: (newCart: Game[]) => void;
 }>({
   cart: [],
-  addToCart: () => {},
-  removeFromCart: () => {},
+  setCart: () => {},
 });
 
 export const CartProvider = ({ children }: { children: ReactElement }) => {
-  const [cart, setCart] = useState<Game[]>([]);
+  const [cart, setCart] = useState<Game[]>(() => {
+    try {
+      const savedCart = localStorage.getItem("cart");
 
-  const addToCart = (game: Game) => {
-    setCart([...cart, game]);
-  };
+      return savedCart ? JSON.parse(savedCart) : [];
+    } catch {
+      return [];
+    }
+  });
 
-  const removeFromCart = (game: Game) => {
-    setCart(cart.filter((_game) => game.id !== _game.id));
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  const updateCart = (newCart: Game[]) => {
+    setCart(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cart, setCart: updateCart }}>
       {children}
     </CartContext.Provider>
   );
 };
-
-export const useCart = () => useContext(CartContext);

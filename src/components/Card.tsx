@@ -1,11 +1,19 @@
-import { useCart } from "@/context/cartContext";
 import { Game } from "@/utils/endpoint";
 import { isObjectInList } from "@/utils/isObjectInList";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
-const Card = (game: Game) => {
-  const { cart, addToCart, removeFromCart } = useCart();
-
+const Card = ({
+  game,
+  cart,
+  addToCart,
+  removeFromCart,
+}: {
+  game: Game;
+  cart: Game[];
+  addToCart: (game: Game) => void;
+  removeFromCart: (game: Game) => void;
+}) => {
   const buttonAction = (game: Game) => {
     if (isObjectInList(game, cart)) {
       removeFromCart(game);

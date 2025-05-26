@@ -1,9 +1,17 @@
-import { useCart } from "@/context/cartContext";
 import { Game } from "@/utils/endpoint";
 import Image from "next/image";
 
-const CartItem = ({ game, isLast }: { game: Game; isLast: boolean }) => {
-  const { cart, removeFromCart } = useCart();
+const CartItem = ({
+  game,
+  isLast,
+  disabled,
+  removeFromCart,
+}: {
+  game: Game;
+  isLast: boolean;
+  disabled: boolean;
+  removeFromCart: (game: Game) => void;
+}) => {
   return (
     <div
       className={`w-full px-4 py-5 flex gap-6 h-[196px] ${
@@ -32,7 +40,7 @@ const CartItem = ({ game, isLast }: { game: Game; isLast: boolean }) => {
       <div>
         <button
           type="button"
-          disabled={cart.length === 1}
+          disabled={disabled}
           onClick={() => removeFromCart(game)}
         >
           X

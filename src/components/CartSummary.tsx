@@ -1,8 +1,7 @@
-import { useCart } from "@/context/cartContext";
+import { Game } from "@/utils/endpoint";
 import { useEffect, useState } from "react";
 
-const CartSummary = () => {
-  const { cart } = useCart();
+const CartSummary = ({ cart }: { cart: Game[] }) => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {

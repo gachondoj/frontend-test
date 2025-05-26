@@ -1,16 +1,22 @@
 "use client";
-import { useCart } from "@/context/cartContext";
+import { CartContext } from "@/context/cartContext";
 import Link from "next/link";
+import { useContext, useEffect, useState } from "react";
 
 const Header = () => {
-  const { cart } = useCart();
+  const { cart } = useContext(CartContext);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setCount(cart.length);
+  }, [cart]);
 
   return (
     <div className="w-full flex bg-gray-100 h-16 justify-between items-center px-5 sm:px-32">
       <Link href="/" className="font-bold text-gray-400 text-2xl">
         GamerShop
       </Link>
-      <Link href={cart.length === 0 ? {} : "/cart"}>Cart: {cart.length}</Link>
+      <Link href={cart.length === 0 ? {} : "/cart"}>Cart: {count}</Link>
     </div>
   );
 };
