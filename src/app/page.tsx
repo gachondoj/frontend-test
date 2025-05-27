@@ -2,6 +2,7 @@
 import Button from "@/components/Button";
 import GameCard from "@/components/GameCard";
 import Loading from "@/components/Loading";
+import Select from "@/components/Select";
 import { CartContext } from "@/context/cartContext";
 import { getGames } from "@/services/games";
 import { Game } from "@/utils/endpoint";
@@ -44,6 +45,14 @@ export default function Home() {
     [searchParams]
   );
 
+  const updateRouter = (value: string) => {
+    if (value === "All") {
+      router.push(pathname);
+    } else {
+      router.push(pathname + "?" + createQueryString("genre", value));
+    }
+  };
+
   const seeMoreGames = async () => {
     setIsLoadingMoreGames(true);
     const res = await getGames({ page: page + 1 });
@@ -57,7 +66,7 @@ export default function Home() {
       setIsLoading(true);
       const res = await getGames({ genre: genre ?? undefined });
       if (games.length === 0) {
-        setFilters(res.availableFilters);
+        setFilters(["All", ...res.availableFilters]);
         setTotalPages(res.totalPages);
       }
       setGames(res.games);
@@ -79,30 +88,12 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center gap-12 py-8 px-6 lg:py-12 lg:px-32">
       <div className="w-full font-bold text-gray-600 text-4xl">Top Sellers</div>
-      <div className="w-full justify-end flex mb-12 gap-5 text-gray-600">
-        <div className="font-bold">Genre</div>
-        <div>|</div>
-        <select
-          disabled={isLoading}
-          value={genre ?? "All"}
-          onChange={(e) => {
-            if (e.target.value === "All") {
-              router.push(pathname);
-            } else {
-              router.push(
-                pathname + "?" + createQueryString("genre", e.target.value)
-              );
-            }
-          }}
-        >
-          <option value="All">All</option>
-          {filters.map((filter, index) => (
-            <option key={index} value={filter}>
-              {filter}
-            </option>
-          ))}
-        </select>
-      </div>
+      <Select
+        title="Genre"
+        value={genre ?? "All"}
+        options={filters}
+        onChange={(value: string) => updateRouter(value)}
+      />
       {isLoading ? (
         <Loading />
       ) : (
