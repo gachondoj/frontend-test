@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { Game } from "@/utils/endpoint";
 import { CartContext } from "@/context/cartContext";
+import BackLink from "@/components/BackLink";
 
 export default function Cart() {
   const { setCart: updateCart } = useContext(CartContext);
@@ -35,10 +36,8 @@ export default function Cart() {
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-12 py-8 px-6 md:py-12 md:px-32">
-      <Link href="/" className="w-full flex items-start gap-2">
-        <i className="ri-arrow-left-line" />
-        <div>Back to Catalog</div>
-      </Link>
+      <BackLink href="/" content="Back to Catalog" />
+
       <div className="flex flex-col gap-3 w-full items-start justify-start ">
         <div className="font-bold text-gray-600 text-4xl">Your Cart</div>
         <div className="text-gray-600 text-2xl font-normal">
