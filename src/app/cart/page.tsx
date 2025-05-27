@@ -35,10 +35,10 @@ export default function Cart() {
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-12 py-8 px-6 md:py-12 md:px-32">
-      <div className="w-full flex items-start gap-2">
-        <Link href="/">/-</Link>
+      <Link href="/" className="w-full flex items-start gap-2">
+        <i className="ri-arrow-left-line" />
         <div>Back to Catalog</div>
-      </div>
+      </Link>
       <div className="flex flex-col gap-3 w-full items-start justify-start ">
         <div className="font-bold text-gray-600 text-4xl">Your Cart</div>
         <div className="text-gray-600 text-2xl font-normal">

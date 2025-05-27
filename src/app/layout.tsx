@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Suspense } from "react";
 import { CartProvider } from "@/context/cartContext";
+import "remixicon/fonts/remixicon.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

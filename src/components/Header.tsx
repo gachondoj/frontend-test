@@ -16,7 +16,9 @@ const Header = () => {
       <Link href="/" className="font-bold text-gray-400 text-2xl">
         GamerShop
       </Link>
-      <Link href={cart.length === 0 ? {} : "/cart"}>Cart: {count}</Link>
+      <Link href={cart.length === 0 ? {} : "/cart"}>
+        <i className="ri-shopping-cart-line">{count > 0 ? count : ""}</i>
+      </Link>
     </div>
   );
 };
