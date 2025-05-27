@@ -1,6 +1,7 @@
 import { API_URL } from "@/config";
 
 export const getGames = async (props: { genre?: string; page?: number }) => {
+  console.log(API_URL);
   const urlProps = props.genre
     ? `genre=${props.genre}&page=${props.page ?? 1}`
     : `page=${props.page ?? 1}`;
