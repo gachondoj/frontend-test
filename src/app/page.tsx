@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/Button";
 import GameCard from "@/components/GameCard";
+import Loading from "@/components/Loading";
 import { CartContext } from "@/context/cartContext";
 import { getGames } from "@/services/games";
 import { Game } from "@/utils/endpoint";
@@ -103,9 +104,7 @@ export default function Home() {
         </select>
       </div>
       {isLoading ? (
-        <div className="flex w-full justify-center items-center">
-          LOADING ...
-        </div>
+        <Loading />
       ) : (
         <div className="w-full grid grid-cols-1  lg:grid-cols-3 lg:gap-12 gap-6">
           {games.map((game) => (
@@ -123,11 +122,7 @@ export default function Home() {
           ))}
         </div>
       )}
-      {isLoadingMoreGames && (
-        <div className="w-full flex justify-center">
-          <p>Loading ...</p>
-        </div>
-      )}
+      {isLoadingMoreGames && <Loading />}
 
       {!isLoadingMoreGames && !genre && (
         <div className="w-full flex">
