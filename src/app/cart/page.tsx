@@ -2,7 +2,6 @@
 import CartItem from "@/components/CartItem";
 import CartSummary from "@/components/CartSummary";
 import { redirect } from "next/navigation";
-import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { Game } from "@/utils/endpoint";
 import { CartContext } from "@/context/cartContext";
