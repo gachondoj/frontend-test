@@ -1,4 +1,5 @@
 "use client";
+import Button from "@/components/Button";
 import GameCard from "@/components/GameCard";
 import { CartContext } from "@/context/cartContext";
 import { getGames } from "@/services/games";
@@ -130,14 +131,13 @@ export default function Home() {
 
       {!isLoadingMoreGames && !genre && (
         <div className="w-full flex">
-          <button
-            type="button"
+          <Button
+            content="SEE MORE"
             onClick={() => seeMoreGames()}
+            variant="gray"
             disabled={totalPages === page || isLoadingMoreGames}
-            className="bg-gray-400 text-white px-6 py-4 rounded-lg w-full md:w-fit"
-          >
-            SEE MORE
-          </button>
+            small={true}
+          />
         </div>
       )}
     </main>

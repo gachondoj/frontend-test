@@ -1,5 +1,6 @@
 import { Game } from "@/utils/endpoint";
 import { useEffect, useState } from "react";
+import Button from "./Button";
 
 interface CartSummaryProps {
   cart: Game[];
@@ -45,12 +46,7 @@ const CartSummary = ({ cart }: CartSummaryProps) => {
           </div>
         </div>
       </div>
-      <button
-        type="button"
-        className="bg-gray-400 text-white px-6 py-4 rounded-lg w-full"
-      >
-        Checkout
-      </button>
+      <Button content="Checkout" onClick={() => {}} variant="gray" />
     </div>
   );
 };

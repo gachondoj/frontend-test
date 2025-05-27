@@ -1,6 +1,7 @@
 import { Game } from "@/utils/endpoint";
 import { isObjectInList } from "@/utils/isObjectInList";
 import Image from "next/image";
+import Button from "./Button";
 
 interface GameCardProps {
   game: Game;
@@ -35,13 +36,10 @@ const GameCard = ({ game, cart, addToCart, removeFromCart }: GameCardProps) => {
           </div>
           <div>${game.price}</div>
         </div>
-        <button
+        <Button
+          content={isObjectInList(game, cart) ? "REMOVE" : "ADD TO CART"}
           onClick={() => buttonAction(game)}
-          type="button"
-          className="w-full rounded-lg border border-gray-600 h-14 text-gray-600 font-bold"
-        >
-          {isObjectInList(game, cart) ? "REMOVE" : "ADD TO CART"}
-        </button>
+        />
       </div>
 
       {game.isNew && (
