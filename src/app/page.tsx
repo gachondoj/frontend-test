@@ -75,7 +75,7 @@ export default function Home() {
   }, [cart]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-12 py-8 px-6 sm:py-12 sm:px-32">
+    <main className="flex min-h-screen flex-col items-center gap-12 py-8 px-6 lg:py-12 lg:px-32">
       <div className="w-full font-bold text-gray-600 text-4xl">Top Sellers</div>
       <div className="w-full justify-end flex mb-12 gap-5 text-gray-600">
         <div className="font-bold">Genre</div>
@@ -106,7 +106,7 @@ export default function Home() {
           LOADING ...
         </div>
       ) : (
-        <div className="w-full grid grid-cols-1 sm:grid-cols-3 sm:gap-12 gap-6">
+        <div className="w-full grid grid-cols-1  lg:grid-cols-3 lg:gap-12 gap-6">
           {games.map((game) => (
             <GameCard
               key={game.id}
@@ -134,7 +134,7 @@ export default function Home() {
             type="button"
             onClick={() => seeMoreGames()}
             disabled={totalPages === page || isLoadingMoreGames}
-            className="bg-gray-400 text-white px-6 py-4 rounded-lg w-full sm:w-fit"
+            className="bg-gray-400 text-white px-6 py-4 rounded-lg w-full md:w-fit"
           >
             SEE MORE
           </button>

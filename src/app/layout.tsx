@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <CartProvider>
-        <body className={inter.className}>
+        <body className={inter.className + "min-w-[380px]"}>
           <Header />
           <Suspense>{children}</Suspense>
           <Footer />

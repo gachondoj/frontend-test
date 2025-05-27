@@ -34,7 +34,7 @@ export default function Cart() {
   }, [cart]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-12 py-8 px-6 sm:py-12 sm:px-32">
+    <main className="flex min-h-screen flex-col items-center gap-12 py-8 px-6 md:py-12 md:px-32">
       <div className="w-full flex items-start gap-2">
         <Link href="/">/-</Link>
         <div>Back to Catalog</div>
@@ -45,7 +45,7 @@ export default function Cart() {
           {cart.length} {cart.length > 1 ? "items" : "item"}
         </div>
       </div>
-      <div className="w-full flex gap-20">
+      <div className="w-full flex gap-20 flex-col md:flex-row">
         <div className="w-full flex flex-col gap-0">
           {cart.map((game, index) => (
             <CartItem
