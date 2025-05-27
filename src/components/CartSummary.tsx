@@ -1,7 +1,11 @@
 import { Game } from "@/utils/endpoint";
 import { useEffect, useState } from "react";
 
-const CartSummary = ({ cart }: { cart: Game[] }) => {
+interface CartSummaryProps {
+  cart: Game[];
+}
+
+const CartSummary = ({ cart }: CartSummaryProps) => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {

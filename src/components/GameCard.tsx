@@ -2,17 +2,14 @@ import { Game } from "@/utils/endpoint";
 import { isObjectInList } from "@/utils/isObjectInList";
 import Image from "next/image";
 
-const GameCard = ({
-  game,
-  cart,
-  addToCart,
-  removeFromCart,
-}: {
+interface GameCardProps {
   game: Game;
   cart: Game[];
   addToCart: (game: Game) => void;
   removeFromCart: (game: Game) => void;
-}) => {
+}
+
+const GameCard = ({ game, cart, addToCart, removeFromCart }: GameCardProps) => {
   const buttonAction = (game: Game) => {
     if (isObjectInList(game, cart)) {
       removeFromCart(game);

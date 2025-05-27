@@ -1,17 +1,19 @@
 import { Game } from "@/utils/endpoint";
 import Image from "next/image";
 
+interface CartItemProps {
+  game: Game;
+  isLast: boolean;
+  disabled: boolean;
+  removeFromCart: (game: Game) => void;
+}
+
 const CartItem = ({
   game,
   isLast,
   disabled,
   removeFromCart,
-}: {
-  game: Game;
-  isLast: boolean;
-  disabled: boolean;
-  removeFromCart: (game: Game) => void;
-}) => {
+}: CartItemProps) => {
   return (
     <div
       className={`w-full px-4 py-5 flex gap-6 h-[196px] ${
