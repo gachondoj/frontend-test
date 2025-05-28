@@ -1,30 +1,17 @@
 "use client";
 import Button from "@/components/Button";
-import GameCard from "@/components/GameCard";
+import GameGrid from "@/components/GameGrid";
 import Loading from "@/components/Loading";
 import Select from "@/components/Select";
-import { CartContext } from "@/context/cartContext";
 import { getGames } from "@/services/games";
 import { Game } from "@/utils/endpoint";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function Home() {
-  const { setCart: updateCart } = useContext(CartContext);
-
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-
-  const [cart, setCart] = useState<Game[]>(() => {
-    try {
-      const savedCart = localStorage.getItem("cart");
-
-      return savedCart ? JSON.parse(savedCart) : [];
-    } catch {
-      return [];
-    }
-  });
 
   const [games, setGames] = useState<Game[]>([]);
   const [page, setPage] = useState(1);
@@ -78,13 +65,6 @@ export default function Home() {
     getNewGames();
   }, [genre]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("cart", JSON.stringify(cart));
-    }
-    updateCart(cart);
-  }, [cart]);
-
   return (
     <main className="flex min-h-screen flex-col items-center gap-12 py-8 px-6 lg:py-12 lg:px-32">
       <div className="w-full font-bold text-gray-600 text-4xl">Top Sellers</div>
@@ -94,25 +74,7 @@ export default function Home() {
         options={filters}
         onChange={(value: string) => updateRouter(value)}
       />
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <div className="w-full grid grid-cols-1  lg:grid-cols-3 lg:gap-12 gap-6">
-          {games.map((game) => (
-            <GameCard
-              key={game.id}
-              game={game}
-              cart={cart}
-              addToCart={(game: Game) => {
-                setCart([...cart, game]);
-              }}
-              removeFromCart={(game: Game) => {
-                setCart(cart.filter((_game) => game.id !== _game.id));
-              }}
-            />
-          ))}
-        </div>
-      )}
+      <GameGrid games={games} isLoading={isLoading} />
       {isLoadingMoreGames && <Loading />}
 
       {!isLoadingMoreGames && !genre && (
