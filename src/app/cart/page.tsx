@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { Game } from "@/utils/endpoint";
 import { CartContext } from "@/context/cartContext";
 import BackLink from "@/components/BackLink";
+import CartList from "@/components/CartList";
 
 export default function Cart() {
   const { setCart: updateCart } = useContext(CartContext);
@@ -27,6 +28,10 @@ export default function Cart() {
   }, []);
 
   useEffect(() => {
+    if (cart.length === 0) {
+      redirect("/");
+    }
+
     if (typeof window !== "undefined") {
       localStorage.setItem("cart", JSON.stringify(cart));
     }
@@ -44,19 +49,7 @@ export default function Cart() {
         </div>
       </div>
       <div className="w-full flex gap-20 flex-col md:flex-row">
-        <div className="w-full flex flex-col gap-0">
-          {cart.map((game, index) => (
-            <CartItem
-              key={game.id}
-              game={game}
-              isLast={index + 1 === cart.length}
-              disabled={cart.length === 1}
-              removeFromCart={(game) => {
-                setCart(cart.filter((_game) => game.id !== _game.id));
-              }}
-            />
-          ))}
-        </div>
+        <CartList cart={cart} setCart={setCart} />
         <div className="w-full">
           <CartSummary cart={cart} />
         </div>
