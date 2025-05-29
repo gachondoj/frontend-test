@@ -21,7 +21,7 @@ const GameCard = ({ game, cart, addToCart, removeFromCart }: GameCardProps) => {
   };
 
   return (
-    <div className="relative border-[0.5px] border-[#8F8F8F] rounded-2xl justify-between flex flex-col p-6 h-full w-full ">
+    <div className="relative border-[0.5px] border-gray-200 rounded-2xl justify-between flex flex-col p-6 h-full w-full ">
       <Image
         src={game.image}
         alt={game.name}
