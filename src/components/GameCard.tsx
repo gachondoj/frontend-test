@@ -21,14 +21,16 @@ const GameCard = ({ game, cart, addToCart, removeFromCart }: GameCardProps) => {
   };
 
   return (
-    <div className="relative border-[0.5px] border-gray-200 rounded-2xl justify-between flex flex-col p-6 h-full w-full ">
-      <Image
-        src={game.image}
-        alt={game.name}
-        width={1000}
-        height={0}
-        className="rounded-t-2xl w-full h-fit"
-      />
+    <div className="relative border-[0.5px] border-gray-200 rounded-2xl justify-between flex flex-col p-6 gap-5 h-full lg:max-w-[380px]">
+      <div className="h-60 w-full">
+        <Image
+          src={game.image}
+          alt={game.name}
+          width={1000}
+          height={10000}
+          className="rounded-t-2xl object-cover h-60"
+        />
+      </div>
       <div className="flex flex-col gap-5">
         <div className="text-gray-300 font-bold text-base">{game.genre}</div>
         <div className="flex w-full justify-between text-gray-600 font-bold text-lg max-h-6">

@@ -33,7 +33,7 @@ const GameList = ({ games, isLoading }: GameListProps) => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="w-full grid grid-cols-1  lg:grid-cols-3 lg:gap-12 gap-6">
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-5 lg:gap-12 gap-6">
           {games.map((game) => (
             <GameCard
               key={game.id}
