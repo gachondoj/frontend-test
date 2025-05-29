@@ -2,6 +2,7 @@ import { Game } from "@/utils/endpoint";
 import { isObjectInList } from "@/utils/isObjectInList";
 import Image from "next/image";
 import Button from "./Button";
+import Badge from "./Badge";
 
 interface GameCardProps {
   game: Game;
@@ -42,11 +43,7 @@ const GameCard = ({ game, cart, addToCart, removeFromCart }: GameCardProps) => {
         />
       </div>
 
-      {game.isNew && (
-        <div className="bg-white rounded-[4px] absolute top-9 left-9 px-3 py-2 text-gray-600">
-          New
-        </div>
-      )}
+      {game.isNew && <Badge>New</Badge>}
     </div>
   );
 };
