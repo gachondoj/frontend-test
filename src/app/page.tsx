@@ -40,7 +40,7 @@ export default function Home() {
     }
   };
 
-  const seeMoreGames = async () => {
+  const handleSeeMore = async () => {
     setIsLoadingMoreGames(true);
     const res = await getGames({ page: page + 1 });
     setGames([...games, ...res.games]);
@@ -77,11 +77,11 @@ export default function Home() {
       <GameList games={games} isLoading={isLoading} />
       {isLoadingMoreGames && <Loading />}
 
-      {!isLoadingMoreGames && !genre && (
+      {!isLoadingMoreGames && !genre && !isLoading && totalPages !== page && (
         <div className="w-full flex">
           <Button
             content="SEE MORE"
-            onClick={() => seeMoreGames()}
+            onClick={() => handleSeeMore()}
             variant="gray"
             disabled={totalPages === page || isLoadingMoreGames}
             small={true}
