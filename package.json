@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@remixicon/react": "^4.6.0",
     "dotenv": "^16.5.0",
     "next": "^14.2.29",
     "react": "18.3.1",
