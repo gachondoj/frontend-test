@@ -25,12 +25,6 @@ export default function Cart() {
     if (cart.length === 0) {
       redirect("/");
     }
-  }, []);
-
-  useEffect(() => {
-    if (cart.length === 0) {
-      redirect("/");
-    }
 
     if (typeof window !== "undefined") {
       localStorage.setItem("cart", JSON.stringify(cart));
