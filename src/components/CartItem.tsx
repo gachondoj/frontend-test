@@ -1,5 +1,7 @@
 import { Game } from "@/utils/endpoint";
 import Image from "next/image";
+import Link from "./Link";
+import { RiCloseLine } from "@remixicon/react";
 
 interface CartItemProps {
   game: Game;
@@ -40,13 +42,9 @@ const CartItem = ({
         </div>
       </div>
       <div>
-        <button
-          type="button"
-          disabled={disabled}
-          onClick={() => removeFromCart(game)}
-        >
-          X
-        </button>
+        <Link disabled={disabled} onClick={() => removeFromCart(game)}>
+          <RiCloseLine />
+        </Link>
       </div>
     </div>
   );

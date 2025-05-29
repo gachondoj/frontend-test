@@ -1,11 +1,10 @@
 "use client";
-import CartItem from "@/components/CartItem";
 import CartSummary from "@/components/CartSummary";
 import { redirect } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { Game } from "@/utils/endpoint";
 import { CartContext } from "@/context/cartContext";
-import BackLink from "@/components/BackLink";
+import Link from "@/components/Link";
 import CartList from "@/components/CartList";
 
 export default function Cart() {
@@ -40,7 +39,14 @@ export default function Cart() {
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-12 py-8 px-6 md:py-12 md:px-32">
-      <BackLink href="/" content="Back to Catalog" />
+      <div className="w-full flex items-start">
+        <Link href="/">
+          <div className="flex gap-2">
+            <i className="ri-arrow-left-line" />
+            <div>Back to Catalog</div>
+          </div>
+        </Link>
+      </div>
 
       <div className="flex flex-col gap-3 w-full items-start justify-start ">
         <div className="font-bold text-gray-600 text-4xl">Your Cart</div>

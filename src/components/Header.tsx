@@ -1,7 +1,8 @@
 "use client";
 import { CartContext } from "@/context/cartContext";
-import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
+import { RiShoppingCartLine } from "@remixicon/react";
+import Link from "./Link";
 
 const Header = () => {
   const { cart } = useContext(CartContext);
@@ -13,11 +14,14 @@ const Header = () => {
 
   return (
     <div className="w-full flex bg-gray-100 h-16 justify-between items-center px-5 md:px-32">
-      <Link href="/" className="font-bold text-gray-400 text-2xl">
-        GamerShop
+      <Link href="/">
+        <div className="font-bold text-gray-400 text-2xl">GamerShop</div>
       </Link>
-      <Link href={cart.length === 0 ? {} : "/cart"}>
-        <i className="ri-shopping-cart-line">{count > 0 ? count : ""}</i>
+      <Link href="/cart" disabled={cart.length === 0}>
+        <div className="flex">
+          <RiShoppingCartLine />
+          <div>{cart.length > 0 ? cart.length : ""}</div>
+        </div>
       </Link>
     </div>
   );
