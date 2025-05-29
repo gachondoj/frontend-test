@@ -4,11 +4,11 @@ import { Game } from "@/utils/endpoint";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "@/context/cartContext";
 
-interface GameGridProps {
+interface GameListProps {
   games: Game[];
   isLoading?: boolean;
 }
-const GameGrid = ({ games, isLoading }: GameGridProps) => {
+const GameList = ({ games, isLoading }: GameListProps) => {
   const { setCart: updateCart } = useContext(CartContext);
 
   const [cart, setCart] = useState<Game[]>(() => {
@@ -53,4 +53,4 @@ const GameGrid = ({ games, isLoading }: GameGridProps) => {
   );
 };
 
-export default GameGrid;
+export default GameList;

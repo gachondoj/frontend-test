@@ -1,6 +1,6 @@
 "use client";
 import Button from "@/components/Button";
-import GameGrid from "@/components/GameGrid";
+import GameList from "@/components/GameList";
 import Loading from "@/components/Loading";
 import Select from "@/components/Select";
 import { getGames } from "@/services/games";
@@ -74,7 +74,7 @@ export default function Home() {
         options={filters}
         onChange={(value: string) => updateRouter(value)}
       />
-      <GameGrid games={games} isLoading={isLoading} />
+      <GameList games={games} isLoading={isLoading} />
       {isLoadingMoreGames && <Loading />}
 
       {!isLoadingMoreGames && !genre && (
