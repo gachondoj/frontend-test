@@ -13,7 +13,7 @@ const Header = () => {
   }, [cart]);
 
   return (
-    <div className="w-full flex bg-gray-100 h-16 justify-between items-center px-5 md:px-32">
+    <div className="w-full flex bg-gray-100 h-16 justify-between items-center px-5 lg:px-32">
       <Link href="/">
         <div className="font-bold text-gray-400 text-2xl">GamerShop</div>
       </Link>
