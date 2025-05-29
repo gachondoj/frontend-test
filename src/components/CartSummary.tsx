@@ -1,5 +1,7 @@
 import { Game } from "@/utils/endpoint";
 import { useEffect, useState } from "react";
+import CartSummaryItem from "./CartSummaryItem";
+import CartSummaryList from "./CartSummaryList";
 
 interface CartSummaryProps {
   cart: Game[];
@@ -27,14 +29,7 @@ const CartSummary = ({ cart }: CartSummaryProps) => {
         </div>
       </div>
       <div className="flex flex-col py-5 gap-6">
-        <div className="flex flex-col gap-3 font-normal text-gray-600 text-lg">
-          {cart.map((game) => (
-            <div key={game.id} className="flex w-full justify-between">
-              <div>{game.name}</div>
-              <div>${game.price}</div>
-            </div>
-          ))}
-        </div>
+        <CartSummaryList games={cart} />
 
         <div className="border w-full border-gray-200" />
 
