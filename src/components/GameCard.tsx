@@ -37,10 +37,9 @@ const GameCard = ({ game, cart, addToCart, removeFromCart }: GameCardProps) => {
           </div>
           <div>${game.price}</div>
         </div>
-        <Button
-          content={isObjectInList(game, cart) ? "REMOVE" : "ADD TO CART"}
-          onClick={() => buttonAction(game)}
-        />
+        <Button onClick={() => buttonAction(game)}>
+          {isObjectInList(game, cart) ? "REMOVE" : "ADD TO CART"}
+        </Button>
       </div>
 
       {game.isNew && <Badge>New</Badge>}

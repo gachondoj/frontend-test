@@ -53,7 +53,9 @@ export default function Cart() {
         <CartList cart={cart} setCart={setCart} />
         <div className="w-fullflex flex-col gap-8">
           <CartSummary cart={cart} />
-          <Button content="Checkout" onClick={() => {}} variant="gray" />
+          <Button onClick={() => {}} variant="gray">
+            Checkout
+          </Button>
         </div>
       </div>
     </main>

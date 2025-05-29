@@ -1,5 +1,5 @@
 interface ButtonProps {
-  content: string;
+  children: React.ReactNode;
   onClick: () => void;
   variant?: "gray" | "white";
   disabled?: boolean;
@@ -7,7 +7,7 @@ interface ButtonProps {
 }
 
 const Button = ({
-  content,
+  children,
   onClick,
   variant,
   disabled,
@@ -27,7 +27,7 @@ const Button = ({
       }`}
       disabled={disabled}
     >
-      {content}
+      {children}
     </button>
   );
 };

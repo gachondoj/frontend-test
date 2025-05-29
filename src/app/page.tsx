@@ -80,12 +80,13 @@ export default function Home() {
       {!isLoadingMoreGames && !genre && !isLoading && totalPages !== page && (
         <div className="w-full flex">
           <Button
-            content="SEE MORE"
             onClick={() => handleSeeMore()}
             variant="gray"
             disabled={totalPages === page || isLoadingMoreGames}
             small={true}
-          />
+          >
+            SEE MORE
+          </Button>
         </div>
       )}
     </main>
