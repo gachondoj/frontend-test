@@ -4,7 +4,7 @@ interface BadgeProps {
 
 const Badge = ({ children }: BadgeProps) => {
   return (
-    <div className="bg-white rounded-[4px] absolute top-9 left-9 px-3 py-2 text-gray-600">
+    <div className="bg-white rounded-[4px] absolute top-9 left-9 px-3 py-2 text-gray-600 border-gray-200 border-[0.5px]">
       {children}
     </div>
   );
