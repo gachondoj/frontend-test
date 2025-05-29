@@ -22,13 +22,15 @@ const CartItem = ({
         isLast ? "" : "border-b-[0.5px] border-b-gray-200"
       }`}
     >
-      <Image
-        src={game.image}
-        alt={game.name}
-        width={256}
-        height={156}
-        className="max-h-[156px] lg:min-w-64"
-      />
+      <div className="w-64">
+        <Image
+          src={game.image}
+          alt={game.name}
+          width={256}
+          height={0}
+          className="object-cover w-64 h-full"
+        />
+      </div>
       <div className="w-full">
         <div className="text-gray-300 font-bold text-base mb-3">
           {game.genre}

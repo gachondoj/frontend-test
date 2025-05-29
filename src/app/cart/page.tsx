@@ -51,7 +51,7 @@ export default function Cart() {
       </div>
       <div className="w-full flex gap-20 flex-col md:flex-row">
         <CartList cart={cart} setCart={setCart} />
-        <div className="w-fullflex flex-col gap-8">
+        <div className="w-full flex flex-col gap-8">
           <CartSummary cart={cart} />
           <Button onClick={() => {}} variant="gray">
             Checkout
