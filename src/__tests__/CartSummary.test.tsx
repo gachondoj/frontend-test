@@ -4,7 +4,7 @@ import CartSummary from "@/components/CartSummary";
 import { Game } from "@/utils/endpoint";
 
 test("shows cart info correctly", async () => {
-  let cart: Game[] = [
+  let items: Game[] = [
     {
       id: "game1",
       genre: "Genre",
@@ -35,11 +35,11 @@ test("shows cart info correctly", async () => {
   ];
 
   let total = 0;
-  cart.forEach((game) => {
+  items.forEach((game) => {
     total += game.price;
   });
 
-  render(<CartSummary cart={cart} />);
+  render(<CartSummary items={items} total={total} />);
 
   expect(screen.getByText(`$${total}`)).toBeInTheDocument();
 });

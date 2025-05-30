@@ -54,7 +54,7 @@ test("removes item from cart", () => {
     />
   );
 
-  fireEvent.click(screen.getByText("X"));
+  fireEvent.click(screen.getByRole("button"));
   expect(removeFromCart).toHaveBeenCalled();
 });
 
@@ -79,6 +79,6 @@ test("doesn't remove item from cart if disabled", () => {
     />
   );
 
-  fireEvent.click(screen.getByText("X"));
+  fireEvent.click(screen.getByRole("button"));
   expect(removeFromCart).toHaveBeenCalledTimes(0);
 });

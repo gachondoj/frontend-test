@@ -1,7 +1,7 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import GameCard from "@/components/GameCard";
-import { Game } from "@/utils/endpoint";
+import { ShoppingCart } from "@/context/cartContext";
 
 test("shows game genre, name, price and image", async () => {
   let game = {
@@ -13,17 +13,11 @@ test("shows game genre, name, price and image", async () => {
     price: 19.99,
     isNew: false,
   };
-  let cart: Game[] = [];
-  const addToCart = jest.fn();
-  const removeFromCart = jest.fn();
+  let cart: ShoppingCart = { items: [game], total: game.price };
+  const handleButton = jest.fn();
 
   render(
-    <GameCard
-      game={game}
-      cart={cart}
-      addToCart={addToCart}
-      removeFromCart={removeFromCart}
-    />
+    <GameCard game={game} cartItems={cart.items} handleButton={handleButton} />
   );
 
   expect(screen.getByText(game.name)).toBeInTheDocument();
@@ -46,21 +40,15 @@ test("adds item to cart when clicked", () => {
     price: 19.99,
     isNew: false,
   };
-  let cart: Game[] = [];
-  const addToCart = jest.fn();
-  const removeFromCart = jest.fn();
+  let cart: ShoppingCart = { items: [game], total: game.price };
+  const handleButton = jest.fn();
 
   render(
-    <GameCard
-      game={game}
-      cart={cart}
-      addToCart={addToCart}
-      removeFromCart={removeFromCart}
-    />
+    <GameCard game={game} cartItems={cart.items} handleButton={handleButton} />
   );
 
-  fireEvent.click(screen.getByText("ADD TO CART"));
-  expect(addToCart).toHaveBeenCalled();
+  fireEvent.click(screen.getByRole("button"));
+  expect(handleButton).toHaveBeenCalled();
 });
 
 test("shows new tag", () => {
@@ -73,17 +61,11 @@ test("shows new tag", () => {
     price: 19.99,
     isNew: true,
   };
-  let cart: Game[] = [game];
-  const addToCart = jest.fn();
-  const removeFromCart = jest.fn();
+  let cart: ShoppingCart = { items: [game], total: game.price };
+  const handleButton = jest.fn();
 
   render(
-    <GameCard
-      game={game}
-      cart={cart}
-      addToCart={addToCart}
-      removeFromCart={removeFromCart}
-    />
+    <GameCard game={game} cartItems={cart.items} handleButton={handleButton} />
   );
 
   expect(screen.getByText("New")).toBeInTheDocument();
@@ -99,19 +81,13 @@ test("removes item from cart when clicked", () => {
     price: 19.99,
     isNew: false,
   };
-  let cart: Game[] = [game];
-  const addToCart = jest.fn();
-  const removeFromCart = jest.fn();
+  let cart: ShoppingCart = { items: [game], total: game.price };
+  const handleButton = jest.fn();
 
   render(
-    <GameCard
-      game={game}
-      cart={cart}
-      addToCart={addToCart}
-      removeFromCart={removeFromCart}
-    />
+    <GameCard game={game} cartItems={cart.items} handleButton={handleButton} />
   );
 
-  fireEvent.click(screen.getByText("REMOVE"));
-  expect(removeFromCart).toHaveBeenCalled();
+  fireEvent.click(screen.getByRole("button"));
+  expect(handleButton).toHaveBeenCalled();
 });
