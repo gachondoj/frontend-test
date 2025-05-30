@@ -1,9 +1,13 @@
+import { Game } from "@/utils/endpoint";
 import CartSummaryList from "./CartSummaryList";
 import { useCart } from "@/hooks/useCart";
 
-const CartSummary = () => {
-  const { items, total } = useCart();
+interface CartSummaryProps {
+  items: Game[];
+  total: number;
+}
 
+const CartSummary = ({ items, total }: CartSummaryProps) => {
   return (
     <div className="border border-primary-200 rounded-lg px-6 py-8 flex flex-col gap-8">
       <div className="flex flex-col gap-3">

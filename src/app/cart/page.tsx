@@ -6,7 +6,7 @@ import Button from "@/components/Button";
 import { useCart } from "@/hooks/useCart";
 
 export default function Cart() {
-  const { items, removeItem } = useCart();
+  const { items, total, removeItem } = useCart();
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-12 py-8 px-6 md:py-12 md:px-32">
@@ -30,7 +30,7 @@ export default function Cart() {
           <div className="w-full flex gap-20 flex-col md:flex-row">
             <CartList cart={items} removeFromCart={removeItem} />
             <div className="w-full flex flex-col gap-8">
-              <CartSummary />
+              <CartSummary items={items} total={total} />
               <Button onClick={() => {}} variant="gray">
                 Checkout
               </Button>
