@@ -67,7 +67,9 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-12 py-8 px-6 lg:py-12 lg:px-32">
-      <div className="w-full font-bold text-gray-600 text-4xl">Top Sellers</div>
+      <div className="w-full font-bold text-primary-600 text-4xl">
+        Top Sellers
+      </div>
       <Select
         title="Genre"
         value={genre ?? "All"}

@@ -6,9 +6,9 @@ import { useCart } from "@/hooks/useCart";
 const Header = () => {
   const { items } = useCart();
   return (
-    <div className="w-full flex bg-gray-100 h-16 justify-between items-center px-5 lg:px-32">
+    <div className="w-full flex bg-primary-100 h-16 justify-between items-center px-5 lg:px-32">
       <Link href="/">
-        <div className="font-bold text-gray-400 text-2xl">GamerShop</div>
+        <div className="font-bold text-primary-400 text-2xl">GamerShop</div>
       </Link>
       <Link href="/cart" disabled={items.length === 0}>
         <div className="flex">

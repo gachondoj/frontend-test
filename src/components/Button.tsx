@@ -15,8 +15,8 @@ const Button = ({
 }: ButtonProps) => {
   const className =
     variant === "gray"
-      ? "bg-gray-400 text-white"
-      : "border border-gray-600 text-gray-600 font-bold";
+      ? "bg-primary-400 text-white"
+      : "border border-primary-600 text-primary-600 font-bold";
 
   return (
     <button

@@ -19,7 +19,7 @@ const CartItem = ({
   return (
     <div
       className={`w-full px-4 py-5 flex gap-6 h-fit md:h-[196px] ${
-        isLast ? "" : "border-b-[0.5px] border-b-gray-200"
+        isLast ? "" : "border-b-[0.5px] border-b-primary-200"
       }`}
     >
       <div className="w-64">
@@ -32,14 +32,14 @@ const CartItem = ({
         />
       </div>
       <div className="w-full">
-        <div className="text-gray-300 font-bold text-base mb-3">
+        <div className="text-primary-300 font-bold text-base mb-3">
           {game.genre}
         </div>
         <div className="mb-2">{game.name}</div>
-        <div className="mb-5 text-gray-300 font-normal text-base">
+        <div className="mb-5 text-primary-300 font-normal text-base">
           {game.description}
         </div>
-        <div className="w-full flex justify-end font-bold text-gray-600 text-xl">
+        <div className="w-full flex justify-end font-bold text-primary-600 text-xl">
           ${game.price}
         </div>
       </div>

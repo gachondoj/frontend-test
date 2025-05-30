@@ -8,7 +8,7 @@ interface SelectProps {
 
 const Select = ({ title, value, options, onChange, disabled }: SelectProps) => {
   return (
-    <div className="w-full justify-end flex mb-12 gap-5 text-gray-600">
+    <div className="w-full justify-end flex mb-12 gap-5 text-primary-600">
       <div className="font-bold">{title}</div>
       <div>|</div>
       <select

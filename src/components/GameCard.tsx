@@ -12,7 +12,7 @@ interface GameCardProps {
 
 const GameCard = ({ game, cartItems, handleButton }: GameCardProps) => {
   return (
-    <div className="relative border-[0.5px] border-gray-200 rounded-2xl justify-between flex flex-col p-6 gap-5 h-full lg:max-w-[380px]">
+    <div className="relative border-[0.5px] border-primary-200 rounded-2xl justify-between flex flex-col p-6 gap-5 h-full lg:max-w-[380px]">
       <div className="h-60 w-full">
         <Image
           src={game.image}
@@ -23,8 +23,8 @@ const GameCard = ({ game, cartItems, handleButton }: GameCardProps) => {
         />
       </div>
       <div className="flex flex-col gap-5">
-        <div className="text-gray-300 font-bold text-base">{game.genre}</div>
-        <div className="flex w-full justify-between text-gray-600 font-bold text-lg max-h-6">
+        <div className="text-primary-300 font-bold text-base">{game.genre}</div>
+        <div className="flex w-full justify-between text-primary-600 font-bold text-lg max-h-6">
           <div className="text-ellipsis overflow-hidden whitespace-nowrap">
             {game.name}
           </div>

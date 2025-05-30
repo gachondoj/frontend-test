@@ -22,8 +22,8 @@ export default function Cart() {
       {items.length > 0 ? (
         <>
           <div className="flex flex-col gap-3 w-full items-start justify-start ">
-            <div className="font-bold text-gray-600 text-4xl">Your Cart</div>
-            <div className="text-gray-600 text-2xl font-normal">
+            <div className="font-bold text-primary-600 text-4xl">Your Cart</div>
+            <div className="text-primary-600 text-2xl font-normal">
               {items.length} {items.length > 1 ? "items" : "item"}
             </div>
           </div>
