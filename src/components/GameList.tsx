@@ -1,32 +1,23 @@
 import Loading from "./Loading";
 import GameCard from "./GameCard";
 import { Game } from "@/utils/endpoint";
-import { useContext, useEffect, useState } from "react";
-import { CartContext } from "@/context/cartContext";
+import { useCart } from "@/hooks/useCart";
+import { isObjectInList } from "@/utils/isObjectInList";
 
 interface GameListProps {
   games: Game[];
   isLoading?: boolean;
 }
 const GameList = ({ games, isLoading }: GameListProps) => {
-  const { setCart: updateCart } = useContext(CartContext);
+  const { items, addItem, removeItem } = useCart();
 
-  const [cart, setCart] = useState<Game[]>(() => {
-    try {
-      const savedCart = localStorage.getItem("cart");
-
-      return savedCart ? JSON.parse(savedCart) : [];
-    } catch {
-      return [];
+  const handleButton = (game: Game) => {
+    if (isObjectInList(game, items)) {
+      removeItem(game);
+    } else {
+      addItem(game);
     }
-  });
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("cart", JSON.stringify(cart));
-    }
-    updateCart(cart);
-  }, [cart]);
+  };
 
   return (
     <>
@@ -38,13 +29,8 @@ const GameList = ({ games, isLoading }: GameListProps) => {
             <GameCard
               key={game.id}
               game={game}
-              cart={cart}
-              addToCart={(game: Game) => {
-                setCart([...cart, game]);
-              }}
-              removeFromCart={(game: Game) => {
-                setCart(cart.filter((_game) => game.id !== _game.id));
-              }}
+              cartItems={items}
+              handleButton={handleButton}
             />
           ))}
         </div>

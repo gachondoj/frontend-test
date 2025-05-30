@@ -6,20 +6,11 @@ import Badge from "./Badge";
 
 interface GameCardProps {
   game: Game;
-  cart: Game[];
-  addToCart: (game: Game) => void;
-  removeFromCart: (game: Game) => void;
+  cartItems: Game[];
+  handleButton: (game: Game) => void;
 }
 
-const GameCard = ({ game, cart, addToCart, removeFromCart }: GameCardProps) => {
-  const buttonAction = (game: Game) => {
-    if (isObjectInList(game, cart)) {
-      removeFromCart(game);
-    } else {
-      addToCart(game);
-    }
-  };
-
+const GameCard = ({ game, cartItems, handleButton }: GameCardProps) => {
   return (
     <div className="relative border-[0.5px] border-gray-200 rounded-2xl justify-between flex flex-col p-6 gap-5 h-full lg:max-w-[380px]">
       <div className="h-60 w-full">
@@ -39,8 +30,8 @@ const GameCard = ({ game, cart, addToCart, removeFromCart }: GameCardProps) => {
           </div>
           <div>${game.price}</div>
         </div>
-        <Button onClick={() => buttonAction(game)}>
-          {isObjectInList(game, cart) ? "REMOVE" : "ADD TO CART"}
+        <Button onClick={() => handleButton(game)}>
+          {isObjectInList(game, cartItems) ? "REMOVE" : "ADD TO CART"}
         </Button>
       </div>
 

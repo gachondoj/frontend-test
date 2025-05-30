@@ -1,40 +1,69 @@
 "use client";
 import { Game } from "@/utils/endpoint";
+import { parse } from "path";
 import { createContext, useState, useEffect, ReactElement } from "react";
 
+export interface ShoppingCart {
+  items: Game[];
+  total: number;
+}
+
 export const CartContext = createContext<{
-  cart: Game[];
-  setCart: (newCart: Game[]) => void;
+  cart: ShoppingCart;
+  setCart: (type: "ADD" | "REMOVE", game: Game) => void;
 }>({
-  cart: [],
+  cart: { items: [], total: 0 },
   setCart: () => {},
 });
 
-export const CartProvider = ({ children }: { children: ReactElement }) => {
-  const [cart, setCart] = useState<Game[]>(() => {
-    try {
-      const savedCart = localStorage.getItem("cart");
+const getTotal = (items: Game[]) => {
+  return items.reduce((acc, item) => acc + item.price, 0);
+};
 
-      return savedCart ? JSON.parse(savedCart) : [];
-    } catch {
-      return [];
-    }
-  });
+export const CartProvider = ({ children }: { children: ReactElement }) => {
+  const [cart, setCart] = useState<ShoppingCart>({ items: [], total: 0 });
 
   useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-    if (storedCart) {
-      setCart(JSON.parse(storedCart));
+    const stored = localStorage.getItem("cart");
+    console.log("getting cart from storage", stored);
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored);
+        if (parsed.items.length > 0) {
+          setCart(parsed);
+          console.log("setting cart", parsed);
+        }
+      } catch {
+        console.error("Carrito inválido en localStorage");
+      }
     }
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+  const updateCart = (type: "ADD" | "REMOVE", game: Game) => {
+    let newItems = [];
 
-  const updateCart = (newCart: Game[]) => {
+    if (type === "ADD") {
+      newItems = [...cart.items, game];
+    } else {
+      newItems = cart.items.filter((item) => game.id !== item.id);
+    }
+
+    const newCart = {
+      items: newItems,
+      total: getTotal(newItems),
+    };
+
+    console.log("updating cart", {
+      items: newItems,
+      total: getTotal(newItems),
+    });
+
     setCart(newCart);
-    localStorage.setItem("cart", JSON.stringify(newCart));
+
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cart", JSON.stringify(newCart));
+      console.log("setting cart to storage", newCart);
+    }
   };
 
   return (
