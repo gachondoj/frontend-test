@@ -18,7 +18,7 @@ const CartItem = ({
 }: CartItemProps) => {
   return (
     <div
-      className={`w-full px-4 py-5 flex gap-6 h-fit md:h-[196px] ${
+      className={`w-full px-4 py-5 flex gap-6 h-fit min-h-[196px] ${
         isLast ? "" : "border-b-[0.5px] border-b-primary-200"
       }`}
     >
