@@ -14,7 +14,7 @@ export default function Cart() {
         <Link href="/">
           <div className="flex gap-2">
             <i className="ri-arrow-left-line" />
-            <div>Back to Catalog</div>
+            <span>Back to Catalog</span>
           </div>
         </Link>
       </div>

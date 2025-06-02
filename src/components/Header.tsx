@@ -13,7 +13,7 @@ const Header = () => {
       <Link href="/cart" disabled={items.length === 0}>
         <div className="flex">
           <RiShoppingCartLine />
-          <div>{items.length > 0 ? items.length : ""}</div>
+          {items.length > 0 && <span>{items.length}</span>}
         </div>
       </Link>
     </div>
